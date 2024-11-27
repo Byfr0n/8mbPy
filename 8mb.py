@@ -83,6 +83,7 @@ def prompt_crop(input_video):
             threading.Thread(target=play_video, daemon=True).start()
 
     def play_video():
+        nonlocal is_playing
         if is_playing:
             current_frame = scale.get()
             if current_frame < frame_count - 1:
@@ -92,6 +93,7 @@ def prompt_crop(input_video):
             else:
                 play_button.config(text="Play")
                 is_playing = False
+
 
     def set_start():
         nonlocal start_time
